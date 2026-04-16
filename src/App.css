@@ -1,0 +1,24 @@
+.vortex-app {
+  display: flex;
+}
+
+.vortex-main {
+  flex: 1;
+  background-color: #020617;
+  min-height: 100vh;
+}
+
+.vortex-content {
+  padding: 20px;
+}
+
+.section-title {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.vortex-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
