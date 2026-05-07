@@ -3,11 +3,13 @@ import { Header } from "./components/Header.jsx";
 import { Sidebar } from "./components/Sidebar.jsx";
 import { gamesData } from "./data/games.js";
 import { GameCard } from "./components/GameCard.jsx";
+import { GameModal } from "./components/GameModal.jsx";
 import "./App.css";
 
 function App() {
   const [activeTab, setActiveTab] = useState("jogos");
   const [search, setSearch] = useState("");
+  const [selectedGame, setSelectedGame] = useState(null); 
 
   const filteredGames = gamesData.filter((game) =>
     game.title.toLowerCase().includes(search.toLowerCase())
@@ -21,7 +23,6 @@ function App() {
         <Header search={search} setSearch={setSearch} />
 
         <div className="vortex-content">
-
           {activeTab === "dash" && (
             <h2 className="section-title">Dashboard</h2>
           )}
@@ -33,7 +34,11 @@ function App() {
               <div className="vortex-grid">
                 {filteredGames.length > 0 ? (
                   filteredGames.map((game) => (
-                    <GameCard key={game.id} game={game} />
+                    <GameCard 
+                      key={game.id} 
+                      game={game} 
+                      onPlay={() => setSelectedGame(game)} 
+                    />
                   ))
                 ) : (
                   <p>Nenhum jogo encontrado...</p>
@@ -45,9 +50,15 @@ function App() {
           {activeTab === "perfil" && (
             <h2 className="section-title">Perfil</h2>
           )}
-
         </div>
       </main>
+
+      {selectedGame && (
+        <GameModal 
+          game={selectedGame} 
+          onClose={() => setSelectedGame(null)} 
+        />
+      )}
     </div>
   );
 }
