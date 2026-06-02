@@ -22,3 +22,40 @@
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 20px;
 }
+
+.game-card {
+  position: relative;
+}
+
+.favorite-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.65);
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorite-button.active {
+  color: #ef4444;
+}
+
+.favorite-button:hover {
+  background: white;
+  color: #ef4444;
+}
+
+.empty-message {
+  color: #94a3b8;
+  font-size: 16px;
+}

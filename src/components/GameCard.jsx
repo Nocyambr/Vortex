@@ -1,9 +1,19 @@
 import "./GameCard.css";
 import { Play } from "lucide-react";
 
-export function GameCard({ game, onPlay }) {
+export function GameCard({ game, onPlay, isFavorite, onFavorite }) {
   return (
     <div className="game-card">
+      <div
+        className={`favorite-button ${isFavorite ? "active" : ""}`}
+        onClick={(event) => {
+          event.stopPropagation();
+          onFavorite();
+        }}
+      >
+        {isFavorite ? "♥" : "♡"}
+      </div>
+
       <img src={game.banner} alt={game.title} />
 
       <div className="game-info">
